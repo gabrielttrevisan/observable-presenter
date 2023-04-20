@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap');
+
+html, body, #root, .app {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+html, body, #root {
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+}
+
+.app {
+  max-width: 300px;
+  min-width: 200px;
+  align-items: center;
+}
+
+* {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+.todo-button {
+  width: 50px;
+  height: 50px;
+  background-color:darkslateblue;
+  border: 0 !important;
+  transition: all 0.2s ease-out;
+  border-radius: 25px;
+  margin-top: 1rem;
+}
+
+.todo-button:active, .todo-button:focus {
+  outline: 4px solid rgba(71, 61, 139, 0.37) !important;
+}
+
+.todo-button svg {
+  transform: scale(2.5);
+  opacity: 0.8;
+  transition: all 0.2s ease-out;
+}
+
+.todo-button:is(:hover, :focus, :active) svg {
+  transform: scale(2.7);
+  opacity: 1;
+}

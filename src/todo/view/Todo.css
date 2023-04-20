@@ -1,0 +1,77 @@
+@keyframes grow {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.todo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  row-gap: 0.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 1rem 3rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+  width: 100%;
+
+  animation-name: grow;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+}
+
+.todo-form {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-direction: column;
+  row-gap: 0.3rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 1rem 3rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+  width: 100%;
+
+  animation-name: grow;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1; 
+  animation-play-state: running;
+}
+
+.todo-form input:is(:active, :focus, :hover), .todo-form input::placeholder {
+  color: darkslateblue;
+  border-color: darkslateblue;
+  outline-color: darkslateblue;
+}
+
+.todo-form input {
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 0.2rem 0.4rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.todo:hover, .todo-button:hover {
+  background-color: darkslateblue;
+  border-color: rgba(236, 233, 228, 0.295);
+  box-shadow: 0 5px 20px darkslateblue, 0 3px 8px darkslateblue;
+  color: azure;
+}
+
+.todo > span:first-of-type {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
