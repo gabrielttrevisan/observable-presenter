@@ -1,4 +1,4 @@
-import { ObservablePresenter } from '../../presenter'
+import { ObservablePresenter } from '../../shared/presenter'
 import { ToDoModel, Todo } from '../model'
 import { TodoRepository } from './Todo.repository'
 
