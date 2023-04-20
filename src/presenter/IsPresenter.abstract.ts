@@ -25,13 +25,21 @@ export abstract class IsPresenter<T extends Model> implements Presenter<T> {
     return this.#model
   }
 
-  protected next = (current: Partial<T>) => {
+  protected nextPartial = (current: Partial<T>) => {
     const previous = this.#model
 
     this.#model = {
       ...previous,
       ...current,
     }
+
+    this.#subscribers.forEach((subscriber) => subscriber(this.#model, previous))
+  }
+
+  protected next = (current: T) => {
+    const previous = this.#model
+
+    this.#model = current
 
     this.#subscribers.forEach((subscriber) => subscriber(this.#model, previous))
   }

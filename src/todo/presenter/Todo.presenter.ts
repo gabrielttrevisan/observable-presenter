@@ -27,7 +27,7 @@ export class V1TodoPresenter extends IsPresenter<ToDoModel> {
   }
 
   get = async (): Promise<void> => {
-    this.next({ loading: true })
+    this.nextPartial({ loading: true })
 
     const todos = await this.#repository.getToDos()
 
@@ -40,7 +40,7 @@ export class V1TodoPresenter extends IsPresenter<ToDoModel> {
   }
 
   create = async (title: string, description: string): Promise<void> => {
-    this.next({ loading: true })
+    this.nextPartial({ loading: true })
     await this.#repository.create(title, description)
 
     const todos = await this.#repository.getToDos()
