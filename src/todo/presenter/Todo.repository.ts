@@ -1,4 +1,4 @@
-import { Todo } from './Todo.model'
+import { Todo } from '../model'
 import { TodoService } from './Todo.service'
 
 export interface TodoRepository {

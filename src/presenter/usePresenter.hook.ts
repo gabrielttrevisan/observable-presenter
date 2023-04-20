@@ -1,15 +1,20 @@
-import { useRef, useSyncExternalStore } from 'react';
-import { IsPresenter } from './IsPresenter.abstract';
-import { Model } from './types';
+import { useRef, useSyncExternalStore } from 'react'
+import { ObservablePresenter } from './Presenter.observable'
 
-export type InferModel<T> = T extends IsPresenter<infer M> ? M : never;
+export type Allocator<T> = () => T
 
-export const usePresenter = <T extends Model, U extends IsPresenter<T>>(
-  allocate: () => U
-) => {
-  const presenter = useRef(allocate()).current;
+export type InferModel<T> = T extends ObservablePresenter<infer M> ? M : never
+
+export const usePresenter = <T>(allocate: Allocator<T>) => {
+  type InferredModel = InferModel<T>
+
+  const presenter = useRef(allocate()).current
+
+  if (!ObservablePresenter.isPresenter<InferredModel>(presenter))
+    throw Error('The provided allocator does not create a valid Presenter')
+
   return [
-    useSyncExternalStore<T>(presenter.subscribe, presenter.getSnapshot),
+    useSyncExternalStore<InferredModel>(presenter.subscribe, presenter.getSnapshot),
     presenter,
-  ] as const;
-};
+  ] as [InferredModel, T]
+}

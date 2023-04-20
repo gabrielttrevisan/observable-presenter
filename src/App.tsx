@@ -2,13 +2,12 @@ import { useCallback, useEffect, useState } from 'react'
 import './App.css'
 import { usePresenter } from './presenter'
 import {
-  ToDoModel,
-  Todo,
   V1TodoPresenter,
   V1TodoRepository,
   V1TodoService,
 } from './todo/presenter'
 import { TodoComponent, TodoFormComponent } from './todo/view'
+import { ToDoModel, Todo } from './todo/model'
 
 function getV1TodoPresenter() {
   return new V1TodoPresenter(new V1TodoRepository(new V1TodoService()))
@@ -19,10 +18,8 @@ type ButtonAction = 'open-form' | 'submit-form'
 function App() {
   const [action, setAction] = useState<ButtonAction>('open-form')
   const [created, setCreated] = useState<Partial<Todo>>({})
-  const [{ list, loading }, { get, create }] = usePresenter<
-    ToDoModel,
-    V1TodoPresenter
-  >(getV1TodoPresenter)
+  const [{ list, loading }, { get, create }] =
+    usePresenter<V1TodoPresenter>(getV1TodoPresenter)
 
   const handleActionClick = useCallback(() => {
     if (!loading) {

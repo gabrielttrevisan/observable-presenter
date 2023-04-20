@@ -1,3 +1,3 @@
-export * from './IsPresenter.abstract'
+export * from './Presenter.observable'
 export * from './types'
 export * from './usePresenter.hook'
