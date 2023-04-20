@@ -25,24 +25,26 @@ function App() {
   >(getV1TodoPresenter)
 
   const handleActionClick = useCallback(() => {
-    if (action === 'open-form') {
-      setAction('submit-form')
-    } else {
-      if (
-        created.title &&
-        created.title.trim().length > 0 &&
-        created.description &&
-        created.description.trim().length > 0
-      ) {
-        ;(async () => {
-          await create(created.title!, created.description!)
-          await get()
-          setCreated({})
-          setAction('open-form')
-        })()
+    if (!loading) {
+      if (action === 'open-form') {
+        setAction('submit-form')
+      } else {
+        if (
+          created.title &&
+          created.title.trim().length > 0 &&
+          created.description &&
+          created.description.trim().length > 0
+        ) {
+          ;(async () => {
+            await create(created.title!, created.description!)
+            await get()
+            setCreated({})
+            setAction('open-form')
+          })()
+        }
       }
     }
-  }, [action, created])
+  }, [action, created, loading])
 
   const handleOnTodoFormChanged = useCallback(
     (value: Partial<Todo>) => setCreated({ ...created, ...value }),
@@ -59,7 +61,7 @@ function App() {
         <TodoComponent key={key} {...todo} />
       ))}
 
-      {action === 'submit-form' ? (
+      {action === 'submit-form' && !loading ? (
         <TodoFormComponent onChange={handleOnTodoFormChanged} />
       ) : (
         <></>
