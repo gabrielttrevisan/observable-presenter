@@ -11,10 +11,8 @@ export class V1TodoService implements TodoService {
       try {
         const todos = localStorage.getItem('todos')
 
-        setTimeout(() => {
-          const parsedTodos = (todos ? JSON.parse(todos) : []) as Todo[]
-          resolve(parsedTodos)
-        }, Math.random() * 1000)
+        const parsedTodos = (todos ? JSON.parse(todos) : []) as Todo[]
+        resolve(parsedTodos)
       } catch (e: unknown) {
         reject(e)
       }
@@ -24,15 +22,13 @@ export class V1TodoService implements TodoService {
   async create(title: string, description: string): Promise<Todo> {
     return new Promise<Todo>(async (resolve, reject) => {
       try {
-        setTimeout(() => {
-          const newTodo = createTodo(title, description)
-          const todos = localStorage.getItem('todos')
-          const parsedTodos = todos ? JSON.parse(todos) : []
+        const newTodo = createTodo(title, description)
+        const todos = localStorage.getItem('todos')
+        const parsedTodos = todos ? JSON.parse(todos) : []
 
-          parsedTodos.push(newTodo)
-          localStorage.setItem('todos', JSON.stringify(parsedTodos))
-          resolve(newTodo)
-        }, Math.random() * 1000)
+        parsedTodos.push(newTodo)
+        localStorage.setItem('todos', JSON.stringify(parsedTodos))
+        resolve(newTodo)
       } catch (e: unknown) {
         reject(e)
       }
