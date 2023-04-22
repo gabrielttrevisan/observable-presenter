@@ -6,7 +6,10 @@
   "types": "./index.d.ts",
   "scripts": {},
   "keywords": [],
-  "author": "",
+  "author": "Gabriel Troian Trevisan",
+  "repository": {
+    "url": "https://github.com/gabrielttrevisan/observable-presenter"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^18.0.38",
