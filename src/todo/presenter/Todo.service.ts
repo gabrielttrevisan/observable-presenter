@@ -1,4 +1,4 @@
-import { Todo, createTodo } from './Todo.model'
+import { Todo, createTodo } from '../model'
 
 export interface TodoService {
   get(): Promise<Todo[]>

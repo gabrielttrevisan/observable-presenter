@@ -1,20 +1,13 @@
-import { IsPresenter } from '../../presenter'
-import { Todo } from './Todo.model'
+import { ObservablePresenter } from '../../shared/presenter'
+import { ToDoModel, Todo } from '../model'
 import { TodoRepository } from './Todo.repository'
-
-export type TodoList = Map<string, Todo>
-
-export type ToDoModel = {
-  list: TodoList
-  loading: boolean
-}
 
 export interface TodoPresenter {
   get(): Promise<void>
   create(title: string, description: string): Promise<void>
 }
 
-export class V1TodoPresenter extends IsPresenter<ToDoModel> {
+export class V1TodoPresenter extends ObservablePresenter<ToDoModel> {
   #repository: TodoRepository
 
   constructor(repository: TodoRepository) {

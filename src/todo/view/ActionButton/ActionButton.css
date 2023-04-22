@@ -1,0 +1,62 @@
+.action-button {
+  width: 50px;
+  height: 50px;
+  background-color: darkslateblue;
+  border-color: rgba(236, 233, 228, 0.295);
+  box-shadow: 0 5px 20px darkslateblue, 0 3px 8px darkslateblue;
+  color: azure;
+  border: 0 !important;
+  transition: all 0.2s ease-out;
+  border-radius: 25px;
+  margin-top: 1rem;
+  padding: 0;
+  overflow: hidden;
+  align-self: center;
+  justify-self: center;
+}
+
+.action-button:hover {
+  transform: scale(1.1);
+  background-color: rgb(88, 75, 170);
+}
+
+.action-button .icon-wrapper {
+  width: 150px;
+  height: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.action-button:is(:active, :focus) {
+  outline: 4px solid rgba(71, 61, 139, 0.37) !important;
+}
+
+.action-button svg {
+  width: 32px;
+  height: 32px;
+  margin: 9px;
+  opacity: 0.8;
+  transition: all 0.2s ease-out;
+  pointer-events: none;
+}
+
+.action-button .icon-wrapper {
+  transition: all .2s ease-out;
+}
+
+.action-button.loading .icon-wrapper {
+  margin-left: -100px;
+}
+
+.action-button.open-form .icon-wrapper {
+  margin-left: 0;
+}
+
+.action-button.submit-form .icon-wrapper {
+  margin-left: -50px;
+}
+
+.action-button:is(:hover, :focus, :active) svg {
+  transform: scale(1.1);
+}

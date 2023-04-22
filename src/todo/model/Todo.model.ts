@@ -25,3 +25,10 @@ export function createTodo(title: string, description: string): Todo {
     status: "to-be-done",
   };
 }
+
+export type TodoList = Map<string, Todo>
+
+export type ToDoModel = {
+  list: TodoList
+  loading: boolean
+}

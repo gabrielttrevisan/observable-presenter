@@ -1,6 +1,10 @@
 import { Model, Presenter, Subscriber, Unsubscriber } from './types'
 
-export abstract class IsPresenter<T extends Model> implements Presenter<T> {
+export abstract class ObservablePresenter<T extends Model> implements Presenter<T> {
+  static isPresenter<U extends Model>(ins: unknown): ins is ObservablePresenter<U> {
+    return ins instanceof ObservablePresenter
+  }
+
   #model: T
   #subscribers: Set<Subscriber<T>>
 
