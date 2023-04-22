@@ -1,12 +1,12 @@
-# POC de MVP com React
+# Example using ObservablePresenter with React
 
-## Como rodar exemplo
+## Run project
 
-Após clonar o repositório, vá na pasta do mesmo e então execute os seguintes comandos.
+Run the following commands.
 
 ```
 yarn
 yarn dev
 ```
 
-O exemplo estará rodando no `localhost` na porta `5173`.
+The project will run on 'http://localhost:5173' by default.
