@@ -8,10 +8,7 @@ export type InferModel<T> = T extends ObservablePresenter<infer M> ? M : never
 export const usePresenter = <T>(allocate: Allocator<T>) => {
   type InferredModel = InferModel<T>
 
-  const presenter = useRef(allocate()).current
-
-  if (!ObservablePresenter.isPresenter<InferredModel>(presenter))
-    throw Error('The provided allocator does not create a valid Presenter')
+  const presenter = useRef(allocate()).current as ObservablePresenter<InferredModel>
 
   return [
     useSyncExternalStore<InferredModel>(presenter.subscribe, presenter.getSnapshot),

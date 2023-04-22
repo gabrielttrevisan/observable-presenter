@@ -22,6 +22,8 @@
   transition: all 0.2s ease-out;
   cursor: pointer;
   width: 100%;
+  box-sizing: border-box;
+  max-width: 300px;
 
   animation-name: grow;
   animation-duration: 0.2s;
@@ -42,6 +44,7 @@
   transition: all 0.2s ease-out;
   cursor: pointer;
   width: 100%;
+  box-sizing: border-box;
 
   animation-name: grow;
   animation-duration: 0.2s;
